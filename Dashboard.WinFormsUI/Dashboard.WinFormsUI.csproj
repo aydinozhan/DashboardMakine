@@ -120,6 +120,12 @@
     <Compile Include="UserControls\Makineler.Designer.cs">
       <DependentUpon>Makineler.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MakineSecim.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MakineSecim.Designer.cs">
+      <DependentUpon>MakineSecim.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Rapor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Makineler.resx">
       <DependentUpon>Makineler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MakineSecim.resx">
+      <DependentUpon>MakineSecim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Rapor.resx">
       <DependentUpon>Rapor.cs</DependentUpon>

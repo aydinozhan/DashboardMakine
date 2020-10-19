@@ -18,6 +18,7 @@ namespace Dashboard.WinFormsUI.UserControls
 {
     public partial class AnaSayfa : UserControl
     {
+        public Machine Machine { get; set; }
         int a = 0;
         public List<Machine> _machines = new List<Machine>();
         public List<Category> _categories = new List<Category>();
@@ -48,20 +49,20 @@ namespace Dashboard.WinFormsUI.UserControls
 
         private void AnaSayfa_Load(object sender, EventArgs e)
         {
-            Control.CheckForIllegalCrossThreadCalls = false;
-            Console.WriteLine("ana sayfa load fired");
-            _categories = _categoryService.GetAll();
-            cbCategories.DataSource = _categories;
-            cbCategories.DisplayMember = "CategoryName";
-            cbCategories.ValueMember = "CategoryId";
-            cbCategories.SelectedValue = _categoryService.GetIdByName("Hepsi");
-            dtp.Format = DateTimePickerFormat.Custom;
-            CreateGb(GetAllMachines());
-            FillGb(GetAllMachines());
-            _ctgId = _categoryService.GetIdByName("Hepsi");
-            timerDbCheck.Interval = 1000;
-            timerDbCheck.Enabled = true;
-            timerDbCheck.Start();
+            //Control.CheckForIllegalCrossThreadCalls = false;
+            //Console.WriteLine("ana sayfa load fired");
+            //_categories = _categoryService.GetAll();
+            //cbCategories.DataSource = _categories;
+            //cbCategories.DisplayMember = "CategoryName";
+            //cbCategories.ValueMember = "CategoryId";
+            //cbCategories.SelectedValue = _categoryService.GetIdByName("Hepsi");
+            //dtp.Format = DateTimePickerFormat.Custom;
+            //CreateGb(GetAllMachines());
+            //FillGb(GetAllMachines());
+            //_ctgId = _categoryService.GetIdByName("Hepsi");
+            //timerDbCheck.Interval = 1000;
+            //timerDbCheck.Enabled = true;
+            //timerDbCheck.Start();
         }
         private List<Machine> GetAllMachines()
         {

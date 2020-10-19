@@ -25,12 +25,20 @@ namespace Dashboard.WinFormsUI
         private void Form1_Load_1(object sender, EventArgs e)
         {
             Console.WriteLine("form1 load event fired");
-            AnaSayfa anaSayfa = new AnaSayfa();
+
+            MakineSecim ms = new MakineSecim();
             panelMain.Controls.Clear();
-            panelMain.Controls.Add(anaSayfa);
-            anaSayfa.Show();
-            anaSayfa.Dock = DockStyle.Fill;
-            anaSayfa.BringToFront();
+            panelMain.Controls.Add(ms);
+            ms.Show();
+            ms.Dock = DockStyle.Fill;
+            ms.BringToFront();
+
+            //AnaSayfa anaSayfa = new AnaSayfa();
+            //panelMain.Controls.Clear();
+            //panelMain.Controls.Add(anaSayfa);
+            //anaSayfa.Show();
+            //anaSayfa.Dock = DockStyle.Fill;
+            //anaSayfa.BringToFront();
         }
         private void pbExit_Click(object sender, EventArgs e)
         {
@@ -62,6 +70,14 @@ namespace Dashboard.WinFormsUI
             makineler.BringToFront();
         }
 
-     
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MakineSecim ms = new MakineSecim();
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ms);
+            ms.Show();
+            ms.Dock = DockStyle.Fill;
+            ms.BringToFront();
+        }
     }
 }

@@ -129,6 +129,38 @@ namespace Dashboard.DataAccess.Concrete.Mysql
             return machines;
         }
 
+        public Machine GetByName(string machineName)
+        {
+            Machine machine = new Machine();
+            string connString = string.Format("server={0};user=root;database={1};port=3306;password=root;Connection Timeout=1", _serverIp, _serverBackupDb);
+            try
+            {
+                using (_conn = new MySqlConnection(connString))
+                {
+                    string query = string.Format("select * from Machines where MachineName = {0} ", machineName);
+                    using (MySqlCommand cmd = new MySqlCommand(query, _conn))
+                    {
+                        _conn.Open();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                machine.Id = reader.GetInt32(0);
+                                machine.Ip = reader.GetString(1);
+                                machine.MachineName = reader.GetString(2);
+                                machine.CategoryId = reader.GetInt32(3);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("machinedal getByName'de sıkıntı var" + e);
+            }
+            return machine;
+        }
+
         public void Update(Machine machine) 
         {
             string connString = string.Format("server={0};user=root;database={1};port=3306;password=root;Connection Timeout=1;Allow User Variables=True", _serverIp, _serverBackupDb);

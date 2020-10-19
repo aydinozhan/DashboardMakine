@@ -13,5 +13,6 @@ namespace Dashboard.DataAccess.Abtract
         void Add(Machine machine);
         void Delete(int id);
         void Update(Machine machine);
+        Machine GetByName(string machineName);
     }
 }

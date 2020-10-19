@@ -37,6 +37,11 @@ namespace Dashboard.Business.Concrete
             return _machineDal.GetByCategoryId(categoryId);
         }
 
+        public Machine GetByName(string machineName)
+        {
+            return _machineDal.GetByName(machineName);
+        }
+
         public void Update(Machine machine)
         {
             _machineDal.Update(machine);
