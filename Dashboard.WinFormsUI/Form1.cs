@@ -53,12 +53,12 @@ namespace Dashboard.WinFormsUI
         }
         private void btnAnaSayfa_Click(object sender, EventArgs e)
         {
-            AnaSayfa anaSayfa = new AnaSayfa();
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(anaSayfa);
-            anaSayfa.Show();
-            anaSayfa.Dock = DockStyle.Fill;
-            anaSayfa.BringToFront();
+            //AnaSayfa anaSayfa = new AnaSayfa();
+            //panelMain.Controls.Clear();
+            //panelMain.Controls.Add(anaSayfa);
+            //anaSayfa.Show();
+            //anaSayfa.Dock = DockStyle.Fill;
+            //anaSayfa.BringToFront();
         }
         private void btnMakineler_Click(object sender, EventArgs e)
         {

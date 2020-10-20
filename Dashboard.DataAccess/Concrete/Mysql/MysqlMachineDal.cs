@@ -137,7 +137,8 @@ namespace Dashboard.DataAccess.Concrete.Mysql
             {
                 using (_conn = new MySqlConnection(connString))
                 {
-                    string query = string.Format("select * from Machines where MachineName = {0} ", machineName);
+                    string query = string.Format("select * from Machines where MachineName = '{0}' ", machineName);
+                    Console.WriteLine("query is "+query );
                     using (MySqlCommand cmd = new MySqlCommand(query, _conn))
                     {
                         _conn.Open();

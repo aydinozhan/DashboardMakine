@@ -150,5 +150,37 @@ namespace Dashboard.DataAccess.Concrete.Mysql
             }
             return workOrderStates;
         }
+
+        public WorkOrderState GetLast(Machine machine)
+        {
+            string connString = string.Format("server={0};user=root;database={1};port=3306;password=root;Connection Timeout=1", machine.Ip, _raspiDb);
+            WorkOrderState workOrderState = new WorkOrderState();
+            try
+            {
+                using (_conn = new MySqlConnection(connString))
+                {
+                    string query = string.Format("select * from {0} order by Id desc limit 1", _raspiWorkOrderStateTableName);
+                    using (MySqlCommand cmd = new MySqlCommand(query, _conn))
+                    {
+                        _conn.Open();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                workOrderState.Id = reader.GetInt32(0);
+                                workOrderState.WorkOrderNo = reader.GetString(1);
+                                workOrderState.State = reader.GetString(2);
+                                workOrderState.Date = reader.GetDateTime(3);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("workorderstate  getlast'de sıkıntı var\n" + e);
+            }
+            return workOrderState;
+        }
     }
 }

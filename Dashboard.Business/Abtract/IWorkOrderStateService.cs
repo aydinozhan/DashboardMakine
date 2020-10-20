@@ -15,5 +15,6 @@ namespace Dashboard.Business.Abtract
         bool IsWorkOrderFinish(Machine machine, string workOrderNo);
 
         List<WorkOrderState> GetByWorkOrderNo(Machine machine,string workOderNo);
+        WorkOrderState GetLast(Machine machine);
     }
 }

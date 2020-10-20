@@ -32,6 +32,7 @@ namespace Dashboard.WinFormsUI.UserControls
         {
             if (!string.IsNullOrWhiteSpace(tbMachineName.Text))
             {
+                Console.WriteLine("tbMachineName.text : "+tbMachineName.Text);
                 Machine machine = _machineService.GetByName(tbMachineName.Text);
                 AnaSayfa anaSayfa = new AnaSayfa { Machine = machine };
                 panelMain.Controls.Clear();

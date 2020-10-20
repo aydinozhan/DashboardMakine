@@ -37,5 +37,10 @@ namespace Dashboard.Business.Concrete
         {
             return _workOrderStateDal.GetByWorkOrderNo(machine,workOderNo);
         }
+
+        public WorkOrderState GetLast(Machine machine)
+        {
+            return _workOrderStateDal.GetLast(machine);
+        }
     }
 }

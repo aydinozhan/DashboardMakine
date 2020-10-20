@@ -14,5 +14,6 @@ namespace Dashboard.DataAccess.Abtract
         List<WorkOrderState> GetAllByMachine(Machine machine);
         bool IsWorkOrderFinish(Machine machine, string workOrderNo);
         List<WorkOrderState> GetByWorkOrderNo(Machine machine, string workOderNo);
+        WorkOrderState GetLast(Machine machine);
     }
 }
