@@ -33,12 +33,6 @@ namespace Dashboard.WinFormsUI
             ms.Dock = DockStyle.Fill;
             ms.BringToFront();
 
-            //AnaSayfa anaSayfa = new AnaSayfa();
-            //panelMain.Controls.Clear();
-            //panelMain.Controls.Add(anaSayfa);
-            //anaSayfa.Show();
-            //anaSayfa.Dock = DockStyle.Fill;
-            //anaSayfa.BringToFront();
         }
         private void pbExit_Click(object sender, EventArgs e)
         {

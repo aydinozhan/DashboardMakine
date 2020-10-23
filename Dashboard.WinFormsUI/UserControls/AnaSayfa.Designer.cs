@@ -29,51 +29,54 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.dgvWorkOrderStates = new System.Windows.Forms.DataGridView();
+            this.panelSeperator2 = new System.Windows.Forms.Panel();
             this.panelWorOrders = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.tbWorkOrderNo = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnBitir = new System.Windows.Forms.Button();
             this.btnWorkOrders = new System.Windows.Forms.Button();
             this.btnBaslat = new System.Windows.Forms.Button();
+            this.lblWorkOrder = new System.Windows.Forms.Label();
+            this.panelSeperator = new System.Windows.Forms.Panel();
             this.panelDurum = new System.Windows.Forms.Panel();
             this.pieDay = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblKapali = new System.Windows.Forms.Label();
             this.lblAcik = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pbState = new System.Windows.Forms.PictureBox();
             this.lblDurum = new System.Windows.Forms.Label();
+            this.pbState = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timerDbCheck = new System.Windows.Forms.Timer(this.components);
-            this.panelSeperator2 = new System.Windows.Forms.Panel();
-            this.lblWorkOrder = new System.Windows.Forms.Label();
-            this.panelSeperator = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.tbWorkOrderNo = new System.Windows.Forms.TextBox();
             this.lblMakine = new System.Windows.Forms.Label();
+            this.timerDbCheck = new System.Windows.Forms.Timer(this.components);
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderStates)).BeginInit();
             this.panelWorOrders.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panelDurum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pieDay)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbState)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
             // 
+            this.panelMain.Controls.Add(this.dgvWorkOrderStates);
             this.panelMain.Controls.Add(this.panelSeperator2);
             this.panelMain.Controls.Add(this.panelWorOrders);
             this.panelMain.Controls.Add(this.panelDurum);
@@ -83,6 +86,27 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(875, 720);
             this.panelMain.TabIndex = 0;
+            // 
+            // dgvWorkOrderStates
+            // 
+            this.dgvWorkOrderStates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvWorkOrderStates.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvWorkOrderStates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWorkOrderStates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWorkOrderStates.Location = new System.Drawing.Point(0, 505);
+            this.dgvWorkOrderStates.Name = "dgvWorkOrderStates";
+            this.dgvWorkOrderStates.Size = new System.Drawing.Size(875, 215);
+            this.dgvWorkOrderStates.TabIndex = 4;
+            this.dgvWorkOrderStates.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWorkOrderStates_CellClick);
+            this.dgvWorkOrderStates.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvWorkOrderStates_DataBindingComplete);
+            // 
+            // panelSeperator2
+            // 
+            this.panelSeperator2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSeperator2.Location = new System.Drawing.Point(0, 500);
+            this.panelSeperator2.Name = "panelSeperator2";
+            this.panelSeperator2.Size = new System.Drawing.Size(875, 5);
+            this.panelSeperator2.TabIndex = 3;
             // 
             // panelWorOrders
             // 
@@ -96,6 +120,71 @@
             this.panelWorOrders.Name = "panelWorOrders";
             this.panelWorOrders.Size = new System.Drawing.Size(875, 250);
             this.panelWorOrders.TabIndex = 2;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel8);
+            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(437, 55);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(437, 120);
+            this.panel4.TabIndex = 10;
+            // 
+            // panel8
+            // 
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 80);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(437, 40);
+            this.panel8.TabIndex = 2;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.tbWorkOrderNo);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 40);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(437, 40);
+            this.panel6.TabIndex = 1;
+            // 
+            // tbWorkOrderNo
+            // 
+            this.tbWorkOrderNo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tbWorkOrderNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbWorkOrderNo.Location = new System.Drawing.Point(0, 0);
+            this.tbWorkOrderNo.Name = "tbWorkOrderNo";
+            this.tbWorkOrderNo.Size = new System.Drawing.Size(300, 39);
+            this.tbWorkOrderNo.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(437, 40);
+            this.panel5.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 55);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(437, 120);
+            this.panel3.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(320, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 120);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "İş Emri No : ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
@@ -120,6 +209,7 @@
             this.btnBitir.TabIndex = 5;
             this.btnBitir.Text = "Bitir";
             this.btnBitir.UseVisualStyleBackColor = true;
+            this.btnBitir.Click += new System.EventHandler(this.btnBitir_Click);
             // 
             // btnWorkOrders
             // 
@@ -133,6 +223,7 @@
             this.btnWorkOrders.TabIndex = 4;
             this.btnWorkOrders.Text = "İş Emirleri";
             this.btnWorkOrders.UseVisualStyleBackColor = true;
+            this.btnWorkOrders.Click += new System.EventHandler(this.btnWorkOrders_Click);
             // 
             // btnBaslat
             // 
@@ -147,6 +238,26 @@
             this.btnBaslat.Text = "Başlat";
             this.btnBaslat.UseVisualStyleBackColor = true;
             this.btnBaslat.Click += new System.EventHandler(this.btnBaslat_Click);
+            // 
+            // lblWorkOrder
+            // 
+            this.lblWorkOrder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblWorkOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblWorkOrder.Location = new System.Drawing.Point(0, 5);
+            this.lblWorkOrder.Name = "lblWorkOrder";
+            this.lblWorkOrder.Size = new System.Drawing.Size(875, 50);
+            this.lblWorkOrder.TabIndex = 0;
+            this.lblWorkOrder.Text = "WorkOrder";
+            this.lblWorkOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelSeperator
+            // 
+            this.panelSeperator.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelSeperator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSeperator.Location = new System.Drawing.Point(0, 0);
+            this.panelSeperator.Name = "panelSeperator";
+            this.panelSeperator.Size = new System.Drawing.Size(875, 5);
+            this.panelSeperator.TabIndex = 7;
             // 
             // panelDurum
             // 
@@ -163,18 +274,19 @@
             // 
             // pieDay
             // 
-            chartArea2.Name = "ChartArea1";
-            this.pieDay.ChartAreas.Add(chartArea2);
+            this.pieDay.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.pieDay.ChartAreas.Add(chartArea1);
             this.pieDay.Dock = System.Windows.Forms.DockStyle.Left;
-            legend2.Name = "Legend1";
-            this.pieDay.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.pieDay.Legends.Add(legend1);
             this.pieDay.Location = new System.Drawing.Point(0, 0);
             this.pieDay.Name = "pieDay";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.pieDay.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.pieDay.Series.Add(series1);
             this.pieDay.Size = new System.Drawing.Size(300, 200);
             this.pieDay.TabIndex = 6;
             this.pieDay.Text = "chart1";
@@ -221,17 +333,6 @@
             this.panel2.Size = new System.Drawing.Size(75, 200);
             this.panel2.TabIndex = 2;
             // 
-            // pbState
-            // 
-            this.pbState.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pbState.Image = global::Dashboard.WinFormsUI.Properties.Resources.red;
-            this.pbState.Location = new System.Drawing.Point(0, 0);
-            this.pbState.Name = "pbState";
-            this.pbState.Size = new System.Drawing.Size(75, 50);
-            this.pbState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbState.TabIndex = 1;
-            this.pbState.TabStop = false;
-            // 
             // lblDurum
             // 
             this.lblDurum.AutoSize = true;
@@ -243,6 +344,17 @@
             this.lblDurum.TabIndex = 2;
             this.lblDurum.Text = "Durum";
             // 
+            // pbState
+            // 
+            this.pbState.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pbState.Image = global::Dashboard.WinFormsUI.Properties.Resources.red;
+            this.pbState.Location = new System.Drawing.Point(0, 0);
+            this.pbState.Name = "pbState";
+            this.pbState.Size = new System.Drawing.Size(75, 50);
+            this.pbState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbState.TabIndex = 1;
+            this.pbState.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.lblMakine);
@@ -251,102 +363,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(875, 50);
             this.panel1.TabIndex = 1;
-            // 
-            // timerDbCheck
-            // 
-            this.timerDbCheck.Tick += new System.EventHandler(this.timerDbCheck_Tick);
-            // 
-            // panelSeperator2
-            // 
-            this.panelSeperator2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSeperator2.Location = new System.Drawing.Point(0, 500);
-            this.panelSeperator2.Name = "panelSeperator2";
-            this.panelSeperator2.Size = new System.Drawing.Size(875, 5);
-            this.panelSeperator2.TabIndex = 3;
-            // 
-            // lblWorkOrder
-            // 
-            this.lblWorkOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWorkOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblWorkOrder.Location = new System.Drawing.Point(0, 5);
-            this.lblWorkOrder.Name = "lblWorkOrder";
-            this.lblWorkOrder.Size = new System.Drawing.Size(875, 50);
-            this.lblWorkOrder.TabIndex = 0;
-            this.lblWorkOrder.Text = "WorkOrder";
-            this.lblWorkOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelSeperator
-            // 
-            this.panelSeperator.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSeperator.Location = new System.Drawing.Point(0, 0);
-            this.panelSeperator.Name = "panelSeperator";
-            this.panelSeperator.Size = new System.Drawing.Size(875, 5);
-            this.panelSeperator.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(320, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 120);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "İş Emri No : ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 55);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(437, 120);
-            this.panel3.TabIndex = 9;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel8);
-            this.panel4.Controls.Add(this.panel6);
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(437, 55);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(437, 120);
-            this.panel4.TabIndex = 10;
-            // 
-            // panel5
-            // 
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(437, 40);
-            this.panel5.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.tbWorkOrderNo);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 40);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(437, 40);
-            this.panel6.TabIndex = 1;
-            // 
-            // panel8
-            // 
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 80);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(437, 40);
-            this.panel8.TabIndex = 2;
-            // 
-            // tbWorkOrderNo
-            // 
-            this.tbWorkOrderNo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tbWorkOrderNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbWorkOrderNo.Location = new System.Drawing.Point(0, 0);
-            this.tbWorkOrderNo.Name = "tbWorkOrderNo";
-            this.tbWorkOrderNo.Size = new System.Drawing.Size(300, 39);
-            this.tbWorkOrderNo.TabIndex = 0;
             // 
             // lblMakine
             // 
@@ -358,6 +374,10 @@
             this.lblMakine.TabIndex = 0;
             this.lblMakine.Text = "label2";
             // 
+            // timerDbCheck
+            // 
+            this.timerDbCheck.Tick += new System.EventHandler(this.timerDbCheck_Tick);
+            // 
             // AnaSayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,7 +388,12 @@
             this.Load += new System.EventHandler(this.AnaSayfa_Load);
             this.VisibleChanged += new System.EventHandler(this.AnaSayfa_VisibleChanged);
             this.panelMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderStates)).EndInit();
             this.panelWorOrders.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panelDurum.ResumeLayout(false);
             this.panelDurum.PerformLayout();
@@ -378,10 +403,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbState)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -415,5 +436,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblMakine;
+        private System.Windows.Forms.DataGridView dgvWorkOrderStates;
     }
 }

@@ -80,6 +80,8 @@
             // 
             this.dgvMachine.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMachine.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvMachine.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvMachine.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dgvMachine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMachine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMachine.GridColor = System.Drawing.SystemColors.Control;

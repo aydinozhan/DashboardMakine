@@ -32,7 +32,7 @@ namespace Dashboard.WinFormsUI.UserControls
         private ICategoryService _categoryService;
         private ILogService _logService;
         private IWorkOrderStateService _workOrderStateService;
-        private string _serverIp="172.16.0.221";
+        private string _serverIp = "172.16.0.221";
         private string _serverDb = "Backup";
         private string _raspiDb = "Machine";
         private string _raspiTable = "Logs";
@@ -49,8 +49,10 @@ namespace Dashboard.WinFormsUI.UserControls
 
         private void AnaSayfa_Load(object sender, EventArgs e)
         {
-            panelSeperator.BackColor = Color.FromArgb(200, 185, 0);
-            panelSeperator2.BackColor = Color.FromArgb(200, 185, 0);
+            panelSeperator.BackColor = Color.FromArgb(0, 77, 64);
+            panelSeperator2.BackColor = Color.FromArgb(0, 77, 64);
+            btnBaslat.BackColor = Color.FromArgb(76, 175, 80);
+            btnBitir.BackColor = Color.FromArgb(198, 40, 40);
             PieChart();
             timerDbCheck.Interval = 1000;
             timerDbCheck.Enabled = true;
@@ -58,12 +60,15 @@ namespace Dashboard.WinFormsUI.UserControls
             DbCheck();
             WorkOrders();
             lblMakine.Text = Machine.MachineName;
-           
-
+            FillWos();
         }
         private List<Machine> GetAllMachines()
         {
             return _machineService.GetAll();
+        }
+        private void FillWos()
+        {
+            dgvWorkOrderStates.DataSource = _workOrderStateService.GetAllByMachine(Machine);
         }
         public void WorkOrders()
         {
@@ -72,7 +77,7 @@ namespace Dashboard.WinFormsUI.UserControls
             wos = _workOrderStateService.GetLast(Machine);
             if (wos.Id == 0)
             {
-                lblWorkOrder.Text = "Bu Makinede İş Emri Bulunamadı";
+                lblWorkOrder.Text = "Bu Makinede Hiç Bir İş Emri Bulunamadı";
             }
             else
             {
@@ -84,7 +89,7 @@ namespace Dashboard.WinFormsUI.UserControls
                     DateTime start = workOrderStates[1].Date;
                     DateTime finish = workOrderStates[0].Date;
                     TimeSpan duration = finish - start;
-                    string wo = string.Format("{0}numaralı iş emri {1} tarihinde başladı {2} tarihinde bitti {3} zaman aldı", wos.WorkOrderNo, start, finish, duration);
+                    string wo = string.Format("{0} numaralı iş emri {1} zamanında bitti ", wos.WorkOrderNo, duration);
                     lblWorkOrder.Text = wo;
                     int startId = workOrderStates[0].Id;
                     int finishId = workOrderStates[1].Id;
@@ -102,7 +107,7 @@ namespace Dashboard.WinFormsUI.UserControls
                     //dgvWorkOrdersDetails.DataSource = _logService.GetById(Machine.Ip, "Machine", "Logs", startId, 0);
                 }
             }
-            
+
         }
         public void PieChart()
         {
@@ -127,7 +132,7 @@ namespace Dashboard.WinFormsUI.UserControls
             {
                 timerDbCheck.Enabled = false;
                 timerDbCheck.Stop();
-            }   
+            }
         }
         public void DbCheck()
         {
@@ -157,34 +162,162 @@ namespace Dashboard.WinFormsUI.UserControls
 
         private void btnBaslat_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(tbWorkOrderNo.Text
-                ))
+            if (!string.IsNullOrWhiteSpace(tbWorkOrderNo.Text))
             {
-                Machine machine = Machine;
+                WorkOrderState wos = new WorkOrderState();
+                wos = _workOrderStateService.GetLast(Machine);
+                Console.WriteLine("wos.id = {0}", wos.Id);
+                Console.WriteLine("wos.state = {0}", wos.State);
+                if (wos.State.ToLower() == "start")
+                {
+                    MessageBox.Show(string.Format("{0} numaralı iş emri hala devam etmekte !", wos.WorkOrderNo));
+                }
+                else
+                {
+                    Machine machine = Machine;
 
-                Log lastLog = _logService.GetLastLog(machine.Ip, _raspiDb, "Logs");
-                TimeSpan time = DateTime.Now.Subtract(lastLog.Date);
-                Log log = new Log
-                {
-                    Name = lastLog.Name,
-                    LastState = lastLog.State,
-                    LastDate = lastLog.Date,
-                    State = lastLog.State,
-                    Time = time,
-                    Shift = lastLog.Shift
-                };
-                _logService.Add(log, machine);
-                int id = lastLog.Id + 1;
-                string workOrderNo = tbWorkOrderNo.Text;
-                WorkOrderState workOrderState = new WorkOrderState
-                {
-                    Id = id,
-                    WorkOrderNo = workOrderNo,
-                    State = "start"
-                };
-                _workOrderStateService.Add(workOrderState, machine);
-                tbWorkOrderNo.Text = "";
+                    Log lastLog = _logService.GetLastLog(machine.Ip, _raspiDb, "Logs");
+                    TimeSpan time = DateTime.Now.Subtract(lastLog.Date);
+                    Log log = new Log
+                    {
+                        Name = lastLog.Name,
+                        LastState = lastLog.State,
+                        LastDate = lastLog.Date,
+                        State = lastLog.State,
+                        Time = time,
+                        Shift = lastLog.Shift
+                    };
+                    _logService.Add(log, machine);
+                    int id = lastLog.Id + 1;
+                    string workOrderNo = tbWorkOrderNo.Text;
+                    WorkOrderState workOrderState = new WorkOrderState
+                    {
+                        Id = id,
+                        WorkOrderNo = workOrderNo,
+                        State = "start"
+                    };
+                    _workOrderStateService.Add(workOrderState, machine);
+                    tbWorkOrderNo.Text = "";
+                    MessageBox.Show("iş emri başlatıldı");
+                }
+
+                FillWos();
             }
+            else
+            {
+                MessageBox.Show("Lütfen İş Emri No Giriniz !");
+            }
+            tbWorkOrderNo.Text = "";
+            WorkOrders();
+        }
+
+        private void btnBitir_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(tbWorkOrderNo.Text))
+            {
+                WorkOrderState wos = new WorkOrderState();
+                wos = _workOrderStateService.GetLast(Machine);
+                if (wos.State.ToLower() != "finish")
+                {
+                    if (wos.WorkOrderNo == tbWorkOrderNo.Text)
+                    {
+                        Machine machine = Machine;
+
+                        Log lastLog = _logService.GetLastLog(machine.Ip, _raspiDb, "Logs");
+                        TimeSpan time = DateTime.Now.Subtract(lastLog.Date);
+                        Log log = new Log
+                        {
+                            Name = lastLog.Name,
+                            LastState = lastLog.State,
+                            LastDate = lastLog.Date,
+                            State = lastLog.State,
+                            Time = time,
+                            Shift = lastLog.Shift
+                        };
+                        _logService.Add(log, machine);
+                        int id = lastLog.Id + 1;
+                        string workOrderNo = tbWorkOrderNo.Text;
+                        WorkOrderState workOrderState = new WorkOrderState
+                        {
+                            Id = id,
+                            WorkOrderNo = workOrderNo,
+                            State = "finish"
+                        };
+                        _workOrderStateService.Add(workOrderState, machine);
+                        tbWorkOrderNo.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("{0} numaralı bir iş emri başlatılmamış", tbWorkOrderNo.Text));
+                    }
+                    FillWos();
+                }
+                else
+                {
+                    MessageBox.Show("Devam etmekte olan iş emri yok !");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen İş Emri No Giriniz !");
+            }
+            tbWorkOrderNo.Text = "";
+            WorkOrders();
+        }
+
+        private void btnWorkOrders_Click(object sender, EventArgs e)
+        {
+
+            IsEmirleri im = new IsEmirleri
+            {
+                Machine = Machine
+            };
+            timerDbCheck.Enabled = false;
+            timerDbCheck.Stop();
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(im);
+            im.Show();
+            im.Dock = DockStyle.Fill;
+            im.BringToFront();
+        }
+
+        private void dgvWorkOrderStates_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            WorkOrderState wos = new WorkOrderState();
+            wos = _workOrderStateService.GetLast(Machine);
+            if (wos.Id!=0)
+            {
+                if (wos.State.ToLower() == "start")
+                {
+                    int i = 0;
+                    foreach (DataGridViewRow row in dgvWorkOrderStates.Rows)
+                    {
+                        if (i == 0)
+                            row.DefaultCellStyle.BackColor = Color.FromArgb(102, 187, 106);
+                        else
+                            row.DefaultCellStyle.BackColor = Color.FromArgb(239, 83, 80);
+                        i++;
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dgvWorkOrderStates.Rows)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(239, 83, 80);
+                    }
+                }
+            }
+            else
+            {
+
+            }
+
+            
+        }
+
+        private void dgvWorkOrderStates_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tbWorkOrderNo.Text = dgvWorkOrderStates.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
     }
 }
