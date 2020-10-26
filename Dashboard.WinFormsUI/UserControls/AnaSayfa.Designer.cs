@@ -60,6 +60,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMakine = new System.Windows.Forms.Label();
             this.timerDbCheck = new System.Windows.Forms.Timer(this.components);
+            this.panelBottom = new System.Windows.Forms.Panel();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderStates)).BeginInit();
             this.panelWorOrders.SuspendLayout();
@@ -72,13 +73,13 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbState)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
             // 
-            this.panelMain.Controls.Add(this.dgvWorkOrderStates);
+            this.panelMain.Controls.Add(this.panelBottom);
             this.panelMain.Controls.Add(this.panelSeperator2);
-            this.panelMain.Controls.Add(this.panelWorOrders);
             this.panelMain.Controls.Add(this.panelDurum);
             this.panelMain.Controls.Add(this.panel1);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -92,10 +93,10 @@
             this.dgvWorkOrderStates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvWorkOrderStates.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvWorkOrderStates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWorkOrderStates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvWorkOrderStates.Location = new System.Drawing.Point(0, 505);
+            this.dgvWorkOrderStates.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvWorkOrderStates.Location = new System.Drawing.Point(0, 248);
             this.dgvWorkOrderStates.Name = "dgvWorkOrderStates";
-            this.dgvWorkOrderStates.Size = new System.Drawing.Size(875, 215);
+            this.dgvWorkOrderStates.Size = new System.Drawing.Size(875, 217);
             this.dgvWorkOrderStates.TabIndex = 4;
             this.dgvWorkOrderStates.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWorkOrderStates_CellClick);
             this.dgvWorkOrderStates.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvWorkOrderStates_DataBindingComplete);
@@ -103,7 +104,7 @@
             // panelSeperator2
             // 
             this.panelSeperator2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSeperator2.Location = new System.Drawing.Point(0, 500);
+            this.panelSeperator2.Location = new System.Drawing.Point(0, 250);
             this.panelSeperator2.Name = "panelSeperator2";
             this.panelSeperator2.Size = new System.Drawing.Size(875, 5);
             this.panelSeperator2.TabIndex = 3;
@@ -116,9 +117,9 @@
             this.panelWorOrders.Controls.Add(this.lblWorkOrder);
             this.panelWorOrders.Controls.Add(this.panelSeperator);
             this.panelWorOrders.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelWorOrders.Location = new System.Drawing.Point(0, 250);
+            this.panelWorOrders.Location = new System.Drawing.Point(0, 0);
             this.panelWorOrders.Name = "panelWorOrders";
-            this.panelWorOrders.Size = new System.Drawing.Size(875, 250);
+            this.panelWorOrders.Size = new System.Drawing.Size(875, 248);
             this.panelWorOrders.TabIndex = 2;
             // 
             // panel4
@@ -129,7 +130,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(437, 55);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(437, 120);
+            this.panel4.Size = new System.Drawing.Size(437, 118);
             this.panel4.TabIndex = 10;
             // 
             // panel8
@@ -172,7 +173,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 55);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(437, 120);
+            this.panel3.Size = new System.Drawing.Size(437, 118);
             this.panel3.TabIndex = 9;
             // 
             // label1
@@ -181,7 +182,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Location = new System.Drawing.Point(320, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 120);
+            this.label1.Size = new System.Drawing.Size(117, 118);
             this.label1.TabIndex = 8;
             this.label1.Text = "İş Emri No : ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -192,7 +193,7 @@
             this.panel7.Controls.Add(this.btnWorkOrders);
             this.panel7.Controls.Add(this.btnBaslat);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 175);
+            this.panel7.Location = new System.Drawing.Point(0, 173);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(875, 75);
             this.panel7.TabIndex = 6;
@@ -378,6 +379,16 @@
             // 
             this.timerDbCheck.Tick += new System.EventHandler(this.timerDbCheck_Tick);
             // 
+            // panelBottom
+            // 
+            this.panelBottom.Controls.Add(this.dgvWorkOrderStates);
+            this.panelBottom.Controls.Add(this.panelWorOrders);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBottom.Location = new System.Drawing.Point(0, 255);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(875, 465);
+            this.panelBottom.TabIndex = 5;
+            // 
             // AnaSayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,6 +414,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbState)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelBottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -437,5 +449,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblMakine;
         private System.Windows.Forms.DataGridView dgvWorkOrderStates;
+        private System.Windows.Forms.Panel panelBottom;
     }
 }

@@ -136,6 +136,7 @@ namespace Dashboard.WinFormsUI.UserControls
         }
         public void DbCheck()
         {
+            Console.WriteLine("dbcheck fired");
             string date = DateTime.Now.ToString("yyyy-MM-dd");
             string acik = _logService.SpendTime(Machine.Ip, "Machine", "Logs", date, "open").ToString();
             string kapali = _logService.SpendTime(Machine.Ip, "Machine", "Logs", date, "close").ToString();
@@ -152,6 +153,16 @@ namespace Dashboard.WinFormsUI.UserControls
 
             string calismaSuresi = string.Format("{0:%d}g {0:%h}s {0:%m}dk {0:%s}sn", gecenSure) + "\t" + lastState;
             lblTime.Text = calismaSuresi;
+           
+            Console.WriteLine("gecensure.minute : {0}",gecenSure.Minutes);
+            if (gecenSure.Minutes > 0 && lastLog.LastState == "close")
+            {
+                Console.WriteLine("kapalı");
+                timerDbCheck.Enabled = false;
+                timerDbCheck.Stop();
+                pbState.Image = Properties.Resources.warning;
+                panelBottom.Controls.Clear();
+            }
 
 
         }

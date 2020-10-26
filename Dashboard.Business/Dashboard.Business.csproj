@@ -83,10 +83,14 @@
     <Compile Include="Abtract\ICategoryService.cs" />
     <Compile Include="Abtract\ILogService.cs" />
     <Compile Include="Abtract\IMachineService.cs" />
+    <Compile Include="Abtract\IReasonService.cs" />
+    <Compile Include="Abtract\IStopReasonService.cs" />
     <Compile Include="Abtract\IWorkOrderStateService.cs" />
     <Compile Include="Concrete\CategoryManager.cs" />
     <Compile Include="Concrete\LogManager.cs" />
     <Compile Include="Concrete\MachineManager.cs" />
+    <Compile Include="Concrete\ReasonManager.cs" />
+    <Compile Include="Concrete\StopReasonManager.cs" />
     <Compile Include="Concrete\WorkOrderStateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -84,6 +84,8 @@
     <Compile Include="Concrete\Category.cs" />
     <Compile Include="Concrete\Log.cs" />
     <Compile Include="Concrete\Machine.cs" />
+    <Compile Include="Concrete\Reason.cs" />
+    <Compile Include="Concrete\StopReason.cs" />
     <Compile Include="Concrete\WorkOrderState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
