@@ -102,6 +102,12 @@
     <Compile Include="UserControls\AnaSayfa.Designer.cs">
       <DependentUpon>AnaSayfa.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AnaSayfaWarning.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AnaSayfaWarning.Designer.cs">
+      <DependentUpon>AnaSayfaWarning.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Detay.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\AnaSayfa.resx">
       <DependentUpon>AnaSayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AnaSayfaWarning.resx">
+      <DependentUpon>AnaSayfaWarning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Detay.resx">
       <DependentUpon>Detay.cs</DependentUpon>

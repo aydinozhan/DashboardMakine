@@ -13,6 +13,6 @@ namespace Dashboard.Entities.Concrete
         public DateTime Start { get; set; }
         public DateTime Finish { get; set; }
         public TimeSpan Time { get; set; }
-        public string Reason { get; set; }
+        public int Reason { get; set; }
     }
 }

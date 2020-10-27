@@ -49,7 +49,12 @@ namespace Dashboard.WinFormsUI.UserControls
 
         private void dgvMachine_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            tbMachineName.Text = dgvMachine.Rows[e.RowIndex].Cells[2].Value.ToString();
+            Console.WriteLine("row index"+e.RowIndex);
+            if (e.RowIndex >=0)
+            {
+                tbMachineName.Text = dgvMachine.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+            
         }
     }
 }

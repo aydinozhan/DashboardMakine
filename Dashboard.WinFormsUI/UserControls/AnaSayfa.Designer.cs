@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.panelBottom = new System.Windows.Forms.Panel();
             this.dgvWorkOrderStates = new System.Windows.Forms.DataGridView();
-            this.panelSeperator2 = new System.Windows.Forms.Panel();
             this.panelWorOrders = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -49,6 +49,7 @@
             this.btnBaslat = new System.Windows.Forms.Button();
             this.lblWorkOrder = new System.Windows.Forms.Label();
             this.panelSeperator = new System.Windows.Forms.Panel();
+            this.panelSeperator2 = new System.Windows.Forms.Panel();
             this.panelDurum = new System.Windows.Forms.Panel();
             this.pieDay = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblTime = new System.Windows.Forms.Label();
@@ -60,8 +61,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMakine = new System.Windows.Forms.Label();
             this.timerDbCheck = new System.Windows.Forms.Timer(this.components);
-            this.panelBottom = new System.Windows.Forms.Panel();
             this.panelMain.SuspendLayout();
+            this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderStates)).BeginInit();
             this.panelWorOrders.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -73,7 +74,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbState)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -88,6 +88,16 @@
             this.panelMain.Size = new System.Drawing.Size(875, 720);
             this.panelMain.TabIndex = 0;
             // 
+            // panelBottom
+            // 
+            this.panelBottom.Controls.Add(this.dgvWorkOrderStates);
+            this.panelBottom.Controls.Add(this.panelWorOrders);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBottom.Location = new System.Drawing.Point(0, 255);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(875, 465);
+            this.panelBottom.TabIndex = 5;
+            // 
             // dgvWorkOrderStates
             // 
             this.dgvWorkOrderStates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -100,14 +110,6 @@
             this.dgvWorkOrderStates.TabIndex = 4;
             this.dgvWorkOrderStates.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWorkOrderStates_CellClick);
             this.dgvWorkOrderStates.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvWorkOrderStates_DataBindingComplete);
-            // 
-            // panelSeperator2
-            // 
-            this.panelSeperator2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSeperator2.Location = new System.Drawing.Point(0, 250);
-            this.panelSeperator2.Name = "panelSeperator2";
-            this.panelSeperator2.Size = new System.Drawing.Size(875, 5);
-            this.panelSeperator2.TabIndex = 3;
             // 
             // panelWorOrders
             // 
@@ -260,6 +262,14 @@
             this.panelSeperator.Size = new System.Drawing.Size(875, 5);
             this.panelSeperator.TabIndex = 7;
             // 
+            // panelSeperator2
+            // 
+            this.panelSeperator2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSeperator2.Location = new System.Drawing.Point(0, 250);
+            this.panelSeperator2.Name = "panelSeperator2";
+            this.panelSeperator2.Size = new System.Drawing.Size(875, 5);
+            this.panelSeperator2.TabIndex = 3;
+            // 
             // panelDurum
             // 
             this.panelDurum.Controls.Add(this.pieDay);
@@ -276,18 +286,18 @@
             // pieDay
             // 
             this.pieDay.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.pieDay.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.pieDay.ChartAreas.Add(chartArea2);
             this.pieDay.Dock = System.Windows.Forms.DockStyle.Left;
-            legend1.Name = "Legend1";
-            this.pieDay.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.pieDay.Legends.Add(legend2);
             this.pieDay.Location = new System.Drawing.Point(0, 0);
             this.pieDay.Name = "pieDay";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.pieDay.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.pieDay.Series.Add(series2);
             this.pieDay.Size = new System.Drawing.Size(300, 200);
             this.pieDay.TabIndex = 6;
             this.pieDay.Text = "chart1";
@@ -379,16 +389,6 @@
             // 
             this.timerDbCheck.Tick += new System.EventHandler(this.timerDbCheck_Tick);
             // 
-            // panelBottom
-            // 
-            this.panelBottom.Controls.Add(this.dgvWorkOrderStates);
-            this.panelBottom.Controls.Add(this.panelWorOrders);
-            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBottom.Location = new System.Drawing.Point(0, 255);
-            this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(875, 465);
-            this.panelBottom.TabIndex = 5;
-            // 
             // AnaSayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,6 +399,7 @@
             this.Load += new System.EventHandler(this.AnaSayfa_Load);
             this.VisibleChanged += new System.EventHandler(this.AnaSayfa_VisibleChanged);
             this.panelMain.ResumeLayout(false);
+            this.panelBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderStates)).EndInit();
             this.panelWorOrders.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -414,7 +415,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbState)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panelBottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

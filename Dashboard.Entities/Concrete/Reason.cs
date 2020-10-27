@@ -11,5 +11,7 @@ namespace Dashboard.Entities.Concrete
     {
         public int Id { get; set; }
         public string Explanation { get; set; }
+        public string  Extra { get; set; }
+
     }
 }

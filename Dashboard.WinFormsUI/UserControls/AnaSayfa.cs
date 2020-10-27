@@ -19,19 +19,14 @@ namespace Dashboard.WinFormsUI.UserControls
     public partial class AnaSayfa : UserControl
     {
         public Machine Machine { get; set; }
-        int a = 0;
+        public int StopMinute { get; set; }
         public List<Machine> _machines = new List<Machine>();
         public List<Category> _categories = new List<Category>();
-        public List<GroupBox> _gbs = new List<GroupBox>();
-        public List<Label> _lblListAcik = new List<Label>();
-        public List<Label> _lblListKapali = new List<Label>();
-        public List<Label> _lblListCalismaSuresi = new List<Label>();
-        public List<TextBox> _tbWorkOrderNo = new List<TextBox>();
-        public List<string> _gbName = new List<string>();
         private IMachineService _machineService;
         private ICategoryService _categoryService;
         private ILogService _logService;
         private IWorkOrderStateService _workOrderStateService;
+        private IStopReasonService _stopReasonService;
         private string _serverIp = "172.16.0.221";
         private string _serverDb = "Backup";
         private string _raspiDb = "Machine";
@@ -45,6 +40,8 @@ namespace Dashboard.WinFormsUI.UserControls
             _categoryService = new CategoryManager(new MysqlCategoryDal());
             _logService = new LogManager(new MysqlLogDal());
             _workOrderStateService = new WorkOrderStateManager(new MysqlWorkOrderStateDal());
+            _stopReasonService = new StopReasonManager(new MysqlStopReasonDal());
+
         }
 
         private void AnaSayfa_Load(object sender, EventArgs e)
@@ -57,6 +54,7 @@ namespace Dashboard.WinFormsUI.UserControls
             timerDbCheck.Interval = 1000;
             timerDbCheck.Enabled = true;
             timerDbCheck.Start();
+          
             DbCheck();
             WorkOrders();
             lblMakine.Text = Machine.MachineName;
@@ -132,6 +130,7 @@ namespace Dashboard.WinFormsUI.UserControls
             {
                 timerDbCheck.Enabled = false;
                 timerDbCheck.Stop();
+
             }
         }
         public void DbCheck()
@@ -147,28 +146,46 @@ namespace Dashboard.WinFormsUI.UserControls
             lastLog = _logService.GetLast(Machine.Ip, "Machine", "Logs");
             string lastState = lastLog.LastState;
             pbState.Image = (lastState == "open") ? Properties.Resources.green : Properties.Resources.red;
+            lblDurum.Text = (lastState == "open") ? "Açık" : "Kapalı";
             lastState = (lastState == "open") ? "'dir açık" : "'dir kapalı";
             var lastTime = lastLog.LastDate;
             var gecenSure = DateTime.Now - lastTime;
 
             string calismaSuresi = string.Format("{0:%d}g {0:%h}s {0:%m}dk {0:%s}sn", gecenSure) + "\t" + lastState;
             lblTime.Text = calismaSuresi;
+            
            
-            Console.WriteLine("gecensure.minute : {0}",gecenSure.Minutes);
-            if (gecenSure.Minutes > 0 && lastLog.LastState == "close")
+            Console.WriteLine("gecensure.minute : {0}",gecenSure.TotalMinutes);
+            bool bl = gecenSure.TotalMinutes > 1;
+            Console.WriteLine("bool : "+bl);
+            if (gecenSure.TotalMinutes > 1 && lastLog.LastState == "close")
             {
-                Console.WriteLine("kapalı");
-                timerDbCheck.Enabled = false;
-                timerDbCheck.Stop();
-                pbState.Image = Properties.Resources.warning;
-                panelBottom.Controls.Clear();
+                StopReason sr = new StopReason();
+                sr = _stopReasonService.GetLast(Machine);
+                TimeSpan time = DateTime.Now - sr.Finish;
+                Console.WriteLine("time : "+time);
+                int min = Convert.ToInt32(time.TotalMinutes);
+                Console.WriteLine("min : "+min);
+                if (min > 1)
+                {
+                    AnaSayfaWarning asw = new AnaSayfaWarning
+                    {
+                        Machine = Machine
+                    };
+                    timerDbCheck.Enabled = false;
+                    timerDbCheck.Stop();
+                    panelMain.Controls.Clear();
+                    panelMain.Controls.Add(asw);
+                    asw.Show();
+                    asw.Dock = DockStyle.Fill;
+                    asw.BringToFront();
+                }
             }
-
-
         }
         private void timerDbCheck_Tick(object sender, EventArgs e)
         {
             DbCheck();
+            Console.WriteLine("anasayfa tişmer");
         }
 
         private void btnBaslat_Click(object sender, EventArgs e)
@@ -277,7 +294,7 @@ namespace Dashboard.WinFormsUI.UserControls
         }
 
         private void btnWorkOrders_Click(object sender, EventArgs e)
-        {
+        {   
 
             IsEmirleri im = new IsEmirleri
             {
@@ -328,7 +345,10 @@ namespace Dashboard.WinFormsUI.UserControls
 
         private void dgvWorkOrderStates_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            tbWorkOrderNo.Text = dgvWorkOrderStates.Rows[e.RowIndex].Cells[1].Value.ToString();
+            if (e.RowIndex >=0)
+            {
+                tbWorkOrderNo.Text = dgvWorkOrderStates.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
         }
     }
 }
